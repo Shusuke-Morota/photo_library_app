@@ -32,3 +32,26 @@ header h1 {
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bold;
 }
+
+.photo {
+    position: relative;
+}
+
+.photo .inner {
+    color: honeydew;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0;
+    width: 100%;
+    font-size: 24px;
+}
+
+.inner p {
+    padding: 20px;
+}
+
+.inner span {
+    margin-left: 10px;
+}
