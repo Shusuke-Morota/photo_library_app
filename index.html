@@ -4,30 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>photo_library_app</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
+    <title>My Photos</title>
 </head>
 
-<header>
-    <h1>My photos</h1>
-</header>
-
-<div class="container">
-    <div id="img_unit">
-
-    </div>
-</div>
-
-<script>
-    var ajax = new XMLHttpRequest();
-    ajax.open('GET', 'http://h2o-space.com/htmlbook/images.php');
-    ajaxresponceType = 'json';
-    ajax.send(null);
-</script>
-
 <body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
 
+    <div class="container">
+        <div id="img_unit">
+        </div>
+    </div>
+
+    <script>
+        var ajax = new XMLHttpRequest();
+        ajax.open('GET', 'https://h2o-space.com/htmlbook/images.php');
+        ajax.responseType = 'json';
+        ajax.send(null);
+
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+                for (var i = 0; i < this.response.length; i++) {
+                    alert(this.response[i].path);
+                }
+            }
+        };
+    </script>
 </body>
 
 </html>
