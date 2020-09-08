@@ -23,42 +23,26 @@
                 </div>
             </div>
         </div>
-        <div id="vue_unit">
-            {{message}}
-        </div>
     </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
 
-        $('#img_unit').html('ここに、画像リストが表示されます')
-
-        $.getJSON('https://h2o-space.com/htmlbook/images.php',
-
-            function (data) {
-
-                for (var i = 0; i < data.length; i++) {
-
-                    $('<div class="photo"></div>')
-
-                        .append('<div class="inner"><p>' + data[i].caption + '<span>' + data[i].name + '</span></p></div>')
-
-                        .append('<img src="' + data[i].path + '">')
-
-                        .appendTo('#img_unit');
-
-                }
-
-            });
-
         var app = new Vue({
-            el: '#vue_unit',
+            el: '#img_unit',
             data: {
-                message: 'vue.jsで書き換えました。'
-            }
-        })
+                Photos: []
+            },
 
+            created: function () {
+                var self = this;
+                $.getJSON('https://h2o-space.com/htmlbook/images.php',
+                    function (data) {
+                        self.Photos = data;
+                    });
+            }
+        });
     </script>
 
 </body>
