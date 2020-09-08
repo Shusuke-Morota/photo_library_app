@@ -17,6 +17,9 @@
     <div class="container">
         <div id="img_unit">
         </div>
+        <div id="vue_unit">
+            {{message}}
+        </div>
     </div>
 
     <script src="js/jquery.min.js"></script>
@@ -42,6 +45,13 @@
                 }
 
             });
+
+        var app = new Vue({
+            el: '#vue_unit',
+            data: {
+                message: 'vue.jsで書き換えました。'
+            }
+        })
 
     </script>
 
